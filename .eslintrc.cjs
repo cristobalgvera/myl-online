@@ -43,6 +43,7 @@ module.exports = {
           { allowWithDecorator: true },
         ],
         '@typescript-eslint/unbound-method': ['error', { ignoreStatic: true }],
+        'no-console': ['error', { allow: ['warn', 'error'] }],
       },
       overrides: [
         {
@@ -55,15 +56,7 @@ module.exports = {
             'plugin:functional/stylistic',
           ],
           rules: {
-            'functional/prefer-immutable-types': [
-              'error',
-              {
-                enforcement: 'None',
-                ignoreInferredTypes: true,
-                parameters: { enforcement: 'ReadonlyShallow' },
-                returnTypes: { enforcement: 'ReadonlyShallow' },
-              },
-            ],
+            'functional/prefer-immutable-types': ['off'],
           },
         },
         {
