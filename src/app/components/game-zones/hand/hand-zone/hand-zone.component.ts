@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { CardComponent } from '@components/card';
-import { DisplayHandService } from '../services';
+import { DisplayHandService } from '../common/services';
 
 @Component({
   selector: 'app-hand-zone',
