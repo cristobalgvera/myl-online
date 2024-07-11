@@ -2,10 +2,8 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { BoardComponent } from '@components/board';
-import {
-  DisplayHandService,
-  HandZoneComponent,
-} from '@components/game-zones/hand-zone';
+import { HandZoneComponent } from '@components/game-zones/hand/hand-zone';
+import { DisplayHandService } from '@components/game-zones/hand/services';
 
 @Component({
   selector: 'app-game',

@@ -1,8 +1,9 @@
+import { BreakpointObserver } from '@angular/cdk/layout';
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { CardComponent } from '@components/card';
-import { DisplayHandService } from './services';
+import { DisplayHandService } from '../services';
 
 @Component({
   selector: 'app-hand-zone',
@@ -13,6 +14,7 @@ import { DisplayHandService } from './services';
 })
 export class HandZoneComponent {
   readonly #displayHandService = inject(DisplayHandService);
+  readonly #breakpointObserver = inject(BreakpointObserver);
 
   protected readonly $isDisplayingHand = toSignal(
     this.#displayHandService.isDisplayingHand$,
@@ -31,6 +33,16 @@ export class HandZoneComponent {
   ] as const;
 
   protected displayHand(): void {
+    const isLargeScreen = this.#breakpointObserver.isMatched(
+      '(min-width: 1280px)',
+    );
+
+    if (isLargeScreen) return;
+
     this.#displayHandService.displayHand();
+
+    setTimeout(() => {
+      this.#displayHandService.hideHand();
+    }, 3000);
   }
 }
