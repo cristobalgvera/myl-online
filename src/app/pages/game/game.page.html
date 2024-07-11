@@ -1,0 +1,19 @@
+<div class="relative h-screen overflow-hidden">
+  <div class="absolute bottom-8 left-8">
+    <app-board />
+  </div>
+  @if ($isDisplayingHand()) {
+    <div class="absolute inset-x-0 z-20 h-screen w-screen">
+      <app-hand-opened />
+    </div>
+    <!-- TODO: Implement button and backdrop to close hand opened -->
+    <button class="absolute bottom-8 right-16 h-10 w-20 rounded">Cerrar</button>
+  } @else {
+    <div
+      class="absolute -bottom-8 right-8 shadow-xl lg:-bottom-4 xl:bottom-4 xl:right-1/2 xl:translate-x-1/2"
+      [ngClass]="{ hidden: $isDisplayingHand() }"
+    >
+      <app-hand-zone />
+    </div>
+  }
+</div>

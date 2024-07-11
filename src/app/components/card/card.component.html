@@ -1,0 +1,14 @@
+<picture>
+  @if (card$ | async; as card) {
+    <img
+      [src]="card.url"
+      alt="Card"
+      class="aspect-[8/11] rounded hover:cursor-pointer"
+      [ngClass]="{
+        'w-16 lg:w-20 xl:w-24 2xl:w-28': $size() === 'sm',
+        'w-20 lg:w-24 xl:w-28 2xl:w-32': $size() === 'md',
+        'w-24 lg:w-28 xl:w-32 2xl:w-36': $size() === 'lg',
+      }"
+    />
+  }
+</picture>

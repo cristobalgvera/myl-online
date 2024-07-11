@@ -1,0 +1,12 @@
+<div class="flex">
+  @for (cardId of cardIds; track cardId) {
+    <div
+      class="w-6 overflow-x-visible transition-transform last:w-fit lg:w-10 xl:w-16 xl:hover:w-fit xl:hover:scale-125"
+      (click)="displayHand()"
+      (keydown.enter)="displayHand()"
+      tabindex="0"
+    >
+      <app-card [cardId]="cardId" size="sm" />
+    </div>
+  }
+</div>
