@@ -28,6 +28,7 @@
     "@angular/platform-server": "^18.0.6",
     "@angular/router": "^18.0.6",
     "@angular/ssr": "^18.0.7",
+    "@ngneat/cashew": "^4.1.0",
     "cache-manager": "^5.7.1",
     "compression": "^1.7.4",
     "express": "^4.19.2",

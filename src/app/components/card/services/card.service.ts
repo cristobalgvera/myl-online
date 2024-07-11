@@ -1,5 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
+import { withCache } from '@ngneat/cashew';
 import { Observable, catchError, of, shareReplay } from 'rxjs';
 import { environment } from 'src/environments';
 import { CardDto } from '../dtos';
@@ -16,7 +17,9 @@ export class CardService {
     return (
       this.#httpClient
         // TODO: Validate URL when there is a real API
-        .get<CardDto>(`${environment.cardsApiUrl}/v1/images/${id}`)
+        .get<CardDto>(`${environment.cardsApiUrl}/v1/images/${id}`, {
+          context: withCache(),
+        })
         .pipe(
           catchError((error: unknown) => {
             if (error instanceof HttpErrorResponse) {
