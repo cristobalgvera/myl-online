@@ -1,5 +1,5 @@
-<div class="flex">
-  @for (cardId of cardIds; track cardId) {
+<div class="flex" [class.hidden]="$isDisplayingHand()">
+  @for (cardId of $currentHand(); track cardId) {
     <div
       class="w-6 overflow-x-visible transition-transform last:w-fit lg:w-10 xl:w-16 xl:hover:w-fit xl:hover:scale-125"
       (click)="displayHand()"

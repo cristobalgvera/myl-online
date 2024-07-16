@@ -7,7 +7,7 @@ export class DisplayHandService {
 
   readonly isDisplayingHand$ = this.#isDisplayingHand$.asObservable();
 
-  displayHand(): void {
+  showHand(): void {
     this.#isDisplayingHand$.next(true);
   }
 

@@ -1,0 +1,9 @@
+<div
+  class="no-scrollbar flex h-44 items-center gap-x-3 overflow-x-scroll px-8 lg:h-56"
+>
+  @for (cardId of $currentHand(); track cardId) {
+    <div class="hover:scale-110">
+      <app-card [cardId]="cardId" size="lg" />
+    </div>
+  }
+</div>

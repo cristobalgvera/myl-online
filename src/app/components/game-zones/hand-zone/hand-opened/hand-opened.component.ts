@@ -1,0 +1,19 @@
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { CardComponent } from '@components/card';
+import { CurrentHandService } from '../services';
+
+@Component({
+  selector: 'app-hand-opened',
+  standalone: true,
+  imports: [CardComponent],
+  templateUrl: './hand-opened.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class HandOpenedComponent {
+  readonly #currentHandService = inject(CurrentHandService);
+
+  protected readonly $currentHand = toSignal(
+    this.#currentHandService.currentHand$,
+  );
+}
