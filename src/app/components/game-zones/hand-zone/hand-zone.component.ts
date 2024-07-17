@@ -1,4 +1,5 @@
 import { Dialog, DialogModule } from '@angular/cdk/dialog';
+import { CdkDragDrop, CdkDropList } from '@angular/cdk/drag-drop';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { CommonModule } from '@angular/common';
 import {
@@ -15,7 +16,7 @@ import { CurrentHandService, DisplayHandService } from './services';
 @Component({
   selector: 'app-hand-zone',
   standalone: true,
-  imports: [CommonModule, CardComponent, DialogModule],
+  imports: [CommonModule, CardComponent, DialogModule, CdkDropList],
   templateUrl: './hand-zone.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -48,5 +49,11 @@ export class HandZoneComponent {
     dialog.closed.pipe(takeUntilDestroyed(this.#destroyRef)).subscribe(() => {
       this.#displayHandService.hideHand();
     });
+  }
+
+  // INFO: It doesn't really matter what the type of the event is.
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  protected moveCard(event: CdkDragDrop<any>) {
+    this.#currentHandService.moveCard(event.previousIndex, event.currentIndex);
   }
 }

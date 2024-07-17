@@ -1,3 +1,4 @@
+import { moveItemInArray } from '@angular/cdk/drag-drop';
 import { Injectable } from '@angular/core';
 import { CardDto } from '@components/card';
 import { BehaviorSubject } from 'rxjs';
@@ -32,5 +33,13 @@ export class CurrentHandService {
 
   removeCard(cardId: CardIdDto) {
     this.#cardIds$.next(this.#cardIds$.value.filter((id) => id !== cardId));
+  }
+
+  moveCard(from: number, to: number) {
+    const cardIds = [...this.#cardIds$.value];
+
+    moveItemInArray(cardIds, from, to);
+
+    this.#cardIds$.next(cardIds);
   }
 }
