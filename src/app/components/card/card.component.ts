@@ -1,3 +1,4 @@
+import { CdkDrag } from '@angular/cdk/drag-drop';
 import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
@@ -13,7 +14,7 @@ import { CardService } from './services';
 @Component({
   selector: 'app-card',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, CdkDrag],
   templateUrl: './card.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
