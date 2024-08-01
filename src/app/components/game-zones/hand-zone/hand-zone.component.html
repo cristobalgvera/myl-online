@@ -1,0 +1,19 @@
+<div
+  cdkDropList
+  [cdkDropListData]="$currentHand()"
+  (cdkDropListDropped)="moveCard($event)"
+  cdkDropListOrientation="horizontal"
+  class="flex"
+  [class.hidden]="$isDisplayingHand()"
+>
+  @for (cardId of $currentHand(); track cardId) {
+    <div
+      class="w-10 overflow-x-visible transition-transform last:w-fit lg:w-14 xl:w-20 xl:hover:w-fit xl:hover:scale-125"
+      (click)="displayHand()"
+      (keydown.enter)="displayHand()"
+      tabindex="0"
+    >
+      <app-card [cardId]="cardId" size="sm" />
+    </div>
+  }
+</div>
