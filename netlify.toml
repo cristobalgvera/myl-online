@@ -1,3 +1,14 @@
 [build]
-  command = "pnpm run build"
+  command = "pnpm build:dev"
   publish = "dist/main/browser"
+
+# Production settings
+[context.production]
+  command = "pnpm build"
+
+# Development settings
+[context.dev]
+  command = "pnpm build:dev"
+
+[context.deploy-preview]
+  command = "pnpm build:dev"
